@@ -16,12 +16,12 @@ node {
    
    stage('docker build/push') {
      docker.withRegistry('https://index.docker.io/v1/', 'frenzy669') {
-       def app = docker.build("frenzy669/docker-nodejs-demo:assaf-${commit_id}", '.').push()
+       def app = docker.build("frenzy669/docker-nodejs-demo:sasson-${commit_id}", '.').push()
      }
    }
    stage('docker run') {
      sh label: '', script: """
-      docker run --rm -tid --name docker_test -p 3000 frenzy669/docker-nodejs-demo:assaf-${commit_id}
+      docker run --rm -tid --name docker_test -p 3000 frenzy669/docker-nodejs-demo:sasson-${commit_id}
       docker kill docker_test
       """
      }
